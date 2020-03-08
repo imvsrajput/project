@@ -13,18 +13,18 @@
 	<form method="POST" style="margin: auto;width: 50%;">
 	  <div class="form-group">
 	    <label for="Title">Title</label>
-	    <input type="text" class="form-control" id="Title" name="Title" required="true" placeholder="Enter Title">
+	    <input type="text" class="form-control" id="Title" name="Title" required="true" placeholder="Enter Title" value="<?=$list['Title']?>">
 	  </div>
 	  <div class="form-group">
 	    <label for="Price">Price</label>
-	    <input type="number" class="form-control" required="true" id="Price" name="Price" placeholder="Price">
+	    <input type="number" class="form-control" required="true" id="Price" name="Price" placeholder="Price" value="<?=$list['Price']?>">
 	  </div>
 	  <div class="form-group">
 	    <label for="Price">Description</label>
-		<textarea name="Description" id="Description" class="form-control" placeholder="Description"></textarea>
+		<textarea name="Description" id="Description" class="form-control" placeholder="Description"><?=$list['Description']?></textarea>
 	  </div>
 	  <span></span><br>
-	  <input type="hidden" class="form-control" name="list_id" id="list_id">
+	  <input type="hidden" class="form-control" name="list_id" id="list_id" value="<?=$list['list_id']?>">
 	  <button type="submit" class="btn btn-primary">Submit</button>
 	</form>
 </div>

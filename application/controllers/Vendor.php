@@ -64,13 +64,12 @@ class Vendor extends CI_Controller {
 	}
 
 	public function list() {
+		$where = ['delete_at'=>null];
 		if($this->chk_login()){
-			if($_SERVER['REQUEST_METHOD']==='GET'){
-				$where = ['user_id'=>$this->session->userdata['vendor_id'],'delete_at'=>null];
-				$lists = $this->db->select('Title,Description,Price')->where($where)->get('lists')->result_array();
-				echo json_encode(['Status'=>1,'Items'=>$lists]);
-			}
+			$where['user_id'] = $this->session->userdata['vendor_id'];
 		}
+		$lists = $this->db->select('Title,Description,Price')->where($where)->get('lists')->result_array();
+		echo json_encode(['Status'=>1,'Items'=>$lists]);
 	}
 
 	public function dellist($list_id=0) {
