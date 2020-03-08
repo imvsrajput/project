@@ -33,8 +33,8 @@ class User extends CI_Controller {
 			try {
 				$where = [
 					'username'=>$_POST['username'], 
-					'password'=>$_POST['password'],
-					'role'=>1
+					'password'=>md5($_POST['password']),
+					'role'=>2
 				];
 				$user = $this->db->where($where)->get('users')->result_array();
 				if(isset($user[0])){
@@ -63,8 +63,8 @@ class User extends CI_Controller {
 				$input['username']=$_POST['username'];
 				$input['mobile']=$_POST['mobile'];
 				$input['email']=$_POST['email'];
-				$input['password']=$_POST['password'];
-				$input['role']=1;
+				$input['password']=md5($_POST['password']);
+				$input['role']=2;
 				if($this->db->insert('users', $input)){
 					echo json_encode(['Status'=>1,'Message'=>'Success']);
 				}else{

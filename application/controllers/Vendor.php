@@ -17,8 +17,8 @@ class Vendor extends CI_Controller {
 			try {
 				$where = [
 					'mobile'=>$_POST['mobile'], 
-					'password'=>$_POST['password'],
-					'role'=>0
+					'password'=>md5($_POST['password']),
+					'role'=>1
 				];
 				$user = $this->db->where($where)->get('users')->result_array();
 				if(isset($user[0])){
@@ -42,7 +42,8 @@ class Vendor extends CI_Controller {
 				$insert['name']=$_POST['name'];
 				$insert['mobile']=$_POST['mobile'];
 				$insert['email']=$_POST['email'];
-				$insert['password']=$_POST['password'];
+				$insert['password']=md5($_POST['password']);
+				$insert['role']=1;
 				if($this->db->insert('users',$insert)){
 					echo json_encode(['Status'=>1,'Message'=>'Success']);
 				}else{
@@ -122,6 +123,8 @@ class Vendor extends CI_Controller {
 					])->get('lists')->result_array();
 					if($d_list){
 						$list = $d_list[0];
+						$list['Description'] = htmlspecialchars($list['Description']);
+						$list['Title'] = htmlspecialchars($list['Title']);
 					}
 				}
 				$this->load->view('addList',['list'=>$list]);
