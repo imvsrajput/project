@@ -1,6 +1,9 @@
 # project
 
--> first clone this.
+-> first run "git clone https://github.com/imvsrajput/project.git" in blank dir.
+
+-> cd project 
+
 --> import database from database/database.sql
 
 <!-- update your databse,user,password,hostname 
@@ -18,7 +21,7 @@
                            -> password: karan
 
 -> go to shopkeeper account
---> add leads 2-3
+--> add lists in nav bar  2-3
 ---> http://localhost:8099/vendor/list check list
 
 <!-- api get/post method -->
